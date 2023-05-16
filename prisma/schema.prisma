@@ -34,3 +34,18 @@ enum Position {
   SECOND_STRIKER
   CENTRE_FORWARD
 }
+
+model Roster {
+  id       Int      @id @default(autoincrement())
+  event_type Event_Type
+  date DateTime
+  time DateTime
+  location String
+  details String
+}
+
+enum Event_Type {
+  PRACTICE
+  MATCH
+  OTHER
+}
