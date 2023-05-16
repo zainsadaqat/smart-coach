@@ -1,0 +1,36 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Coach {
+  id      Int    @id @default(autoincrement())
+  name    String
+  contact String
+}
+
+model Player {
+  id       Int      @id @default(autoincrement())
+  name     String
+  position Position
+  contact  String
+}
+
+enum Position {
+  GOAL_KEEPER
+  FULL_BACK_RIGHT
+  FULL_BACK_LEFT
+  CENTRE_BACK
+  SWEEPER
+  DEFENSIVE_MIDFIELD_RIGHT
+  DEFENSIVE_MIDFIELD_LEFT
+  SECOND_STRIKER
+  CENTRE_FORWARD
+}
