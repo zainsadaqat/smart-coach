@@ -11,9 +11,11 @@ datasource db {
 }
 
 model Coach {
-  id      Int    @id @default(autoincrement())
+  id      Int      @id @default(autoincrement())
   name    String
   contact String
+  rosters Roster[]
+  players Player[]
 }
 
 model Player {
@@ -21,6 +23,21 @@ model Player {
   name     String
   position Position
   contact  String
+  rosters   Roster[]
+  Coach    Coach?   @relation(fields: [coachId], references: [id])
+  coachId  Int?
+}
+
+model Roster {
+  id         Int        @id @default(autoincrement())
+  event_type Event_Type
+  date       DateTime
+  time       DateTime
+  location   String
+  details    String
+  players    Player[]
+  Coach      Coach?     @relation(fields: [coachId], references: [id])
+  coachId    Int?
 }
 
 enum Position {
@@ -33,15 +50,6 @@ enum Position {
   DEFENSIVE_MIDFIELD_LEFT
   SECOND_STRIKER
   CENTRE_FORWARD
-}
-
-model Roster {
-  id       Int      @id @default(autoincrement())
-  event_type Event_Type
-  date DateTime
-  time DateTime
-  location String
-  details String
 }
 
 enum Event_Type {
