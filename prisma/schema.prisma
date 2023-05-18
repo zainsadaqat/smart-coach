@@ -27,6 +27,8 @@ model Player {
   rosters   Roster[]
   Coach    Coach?   @relation(fields: [coachId], references: [id])
   coachId  Int?
+
+  @@index([coachId])
 }
 
 model Roster {
@@ -39,6 +41,8 @@ model Roster {
   players    Player[]
   Coach      Coach?     @relation(fields: [coachId], references: [id])
   coachId    Int?
+
+  @@index([coachId])
 }
 
 enum Position {
