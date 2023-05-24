@@ -19,5 +19,19 @@ export async function GET(request: Request) {
 
 export async function POST(request: Request) {
   const body = await request.json();
-  return NextResponse.json({ message: 'Data has been received!' });
+  const { playerName, playerPosition, playerContactInfo } = body;
+  try {
+    const createdPlayer = await prisma.player.create({
+      data: {
+        // @ts-ignore
+        name: playerName,
+        position: playerPosition,
+        contact: playerContactInfo,
+      },
+    });
+    return NextResponse.json(createdPlayer);
+  } catch (error) {
+    console.error('Error creating player:', error);
+    return NextResponse.json({ error: 'Internal Server Error' });
+  }
 }
