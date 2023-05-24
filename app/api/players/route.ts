@@ -14,6 +14,7 @@ const fetchPlayers = async () => {
 
 export async function GET(request: Request) {
   const players = await fetchPlayers();
+  console.log('All Players from the Backend: ', players);
   return NextResponse.json({ players });
 }
 
