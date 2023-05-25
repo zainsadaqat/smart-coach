@@ -4,7 +4,7 @@ import { Button } from '@chakra-ui/react';
 import Link from 'next/link';
 
 const Players = () => {
-  const [players, setPlayers] = useState([]);
+  const [players, setPlayers] = useState();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,11 +20,19 @@ const Players = () => {
       <Link href={'/players/new'}>
         <Button colorScheme="blue">Add a Player</Button>
       </Link>
+
       <h2>All Players</h2>
       <ul>
-        {players &&
-          players.map((player) => {
-            return <li>{player?.name}</li>;
+        {players?.players &&
+          // @ts-ignore
+          players.players.map((player) => {
+            return (
+              <div className="flex justify-between items-center">
+                <li>{player?.name}</li>
+                <li>{player?.position}</li>
+                <li>{player?.contact}</li>
+              </div>
+            );
           })}
       </ul>
     </div>
