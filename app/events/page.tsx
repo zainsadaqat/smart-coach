@@ -30,7 +30,7 @@ const Events = () => {
       <ul className="my-4">
         {events.events.map((event) => {
           return (
-            <div className="flex flex-col border p-4">
+            <div key={event.id} className="flex flex-col border p-4">
               <li>{event.event_type}</li>
               <li>{event.date}</li>
               <li>{event.time}</li>

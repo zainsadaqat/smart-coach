@@ -27,7 +27,10 @@ const Players = () => {
           // @ts-ignore
           players.players.map((player) => {
             return (
-              <div className="flex justify-between items-center">
+              <div
+                key={player.id}
+                className="flex justify-between items-center"
+              >
                 <li>{player?.name}</li>
                 <li>{player?.position}</li>
                 <li>{player?.contact}</li>
