@@ -8,7 +8,7 @@ const Players = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('/api/players');
+      const response = await fetch('http://localhost:3000/api/players');
       const result = await response.json();
       setPlayers(result);
     };
