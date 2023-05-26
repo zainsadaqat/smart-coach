@@ -1,6 +1,9 @@
 # Smart Coach
 
-> This repository contains React Redux Template.
+Push Prisma Schema to the Database
+```
+npx prisma db push
+```
 
 ## Get Started
 
