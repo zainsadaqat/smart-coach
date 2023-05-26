@@ -28,10 +28,10 @@ const Events = () => {
         <Heading>Recent Events</Heading>
       </div>
       <ul className="my-4">
-        {events.events.map((event) => {
+        {events.events.map((event, index) => {
           return (
             // @ts-ignore
-            <div key={event.id} className="flex flex-col border p-4">
+            <div key={index} className="flex flex-col border p-4">
               <li>{event.event_type}</li>
               <li>{event.date}</li>
               <li>{event.time}</li>
