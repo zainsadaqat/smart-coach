@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
-  url      = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
   relationMode = "prisma"
 }
 
@@ -24,7 +24,7 @@ model Player {
   name     String
   position Position
   contact  String
-  rosters   Roster[]
+  rosters  Roster[]
   Coach    Coach?   @relation(fields: [coachId], references: [id])
   coachId  Int?
 
@@ -34,8 +34,8 @@ model Player {
 model Roster {
   id         Int        @id @default(autoincrement())
   event_type Event_Type
-  date       DateTime
-  time       DateTime
+  date       String
+  time       String
   location   String
   details    String
   players    Player[]
