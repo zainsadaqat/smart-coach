@@ -30,6 +30,7 @@ const Events = () => {
       <ul className="my-4">
         {events.events.map((event) => {
           return (
+            // @ts-ignore
             <div key={event.id} className="flex flex-col border p-4">
               <li>{event.event_type}</li>
               <li>{event.date}</li>
