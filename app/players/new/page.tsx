@@ -128,7 +128,7 @@ const NewPlayer = () => {
             type="submit"
             onClick={() => console.log('Clicked')}
           >
-            Button
+            Create
           </Button>
         </div>
       </FormControl>
