@@ -39,3 +39,19 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Internal Server Error' });
   }
 }
+
+export async function DELETE(request: Request) {
+  const body = await request.json();
+  const { id } = body;
+  try {
+    const deletedEvent = await prisma.roster.delete({
+      where: {
+        id,
+      },
+    });
+    return NextResponse.json(deletedEvent);
+  } catch (error) {
+    console.error('Error deleting Event:', error);
+    return NextResponse.json({ error: 'Internal Server Error' });
+  }
+}

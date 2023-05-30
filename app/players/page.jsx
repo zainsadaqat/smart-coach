@@ -34,6 +34,7 @@ const Players = () => {
                 <li>{player?.name}</li>
                 <li>{player?.position}</li>
                 <li>{player?.contact}</li>
+                <li>Delete</li>
               </div>
             );
           })}
