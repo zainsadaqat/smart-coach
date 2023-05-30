@@ -7,17 +7,24 @@ const Events = () => {
   const [events, setEvents] = useState({
     events: [],
   });
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchEvents = async () => {
       const response = await fetch('http://localhost:3000/api/events');
       const data = await response.json();
       setEvents(data);
-      setLoading(false);
     };
     fetchEvents();
   }, []);
+
+  const handleDelete = async (id) => {
+    const response = await fetch(`http://localhost:3000/api/events`, {
+      method: 'DELETE',
+      body: JSON.stringify({ id }),
+    });
+    const data = await response.json();
+    console.log('Response on Delete: ', data);
+  };
 
   return (
     <div className="my-8">
@@ -32,11 +39,13 @@ const Events = () => {
           return (
             // @ts-ignore
             <div key={index} className="flex flex-col border p-4">
+              <li>{index + 1}</li>
               <li>{event.event_type}</li>
               <li>{event.date}</li>
               <li>{event.time}</li>
               <li>{event.location}</li>
               <li>{event.details}</li>
+              <li onClick={() => handleDelete(event.id)}>Delete</li>
             </div>
           );
         })}
